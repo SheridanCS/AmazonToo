@@ -1,12 +1,16 @@
 using System;
 using System.Collections.Generic;
 
-class User
+namespace AmazonToo.Models
 {
-    public String Id { get; set; }
-    public String Name { get; set; }
-    public String Email { get; set; }
-    public UserAddress Address { get; set; }
-    public Boolean IsPrimeMember { get; set; }
-    public List<Order> Orders { get; }
+    class User
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public UserAddress Address { get; set; }
+        public bool IsPrimeMember { get; set; }
+        public List<Order> Orders { get; set;  }
+    }
+
 }

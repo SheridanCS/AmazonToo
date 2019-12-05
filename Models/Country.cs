@@ -1,7 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 
-enum Country
+namespace AmazonToo.Models
 {
-    [Display(Name = "Canada")]
-    CA
+    enum Country
+    {
+        [Display(Name = "Canada")]
+        CA
+    }
 }

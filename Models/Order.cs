@@ -1,12 +1,16 @@
 using System;
 using System.Collections.Generic;
 
-class Order
+namespace AmazonToo.Models
 {
-    public String Id { get; set; }
-    public List<OrderItem> Items { get; set; }
-    public Decimal Total { get; set; }
-    public Boolean IsProcessed { get; set; }
-    public Boolean IsShipped { get; set; }
-    public User User { get; }
+    class Order
+    {
+        public Guid Id { get; set; }
+        public decimal Total { get; set; }
+        public bool IsProcessed { get; set; }
+        public bool IsShipped { get; set; }
+        public Guid UserId { get; set; }
+        public User User { get; set; }
+        public List<OrderItem> Items { get; set; }
+    }
 }

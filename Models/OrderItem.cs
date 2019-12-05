@@ -1,9 +1,14 @@
 using System;
 
-class OrderItem
+namespace AmazonToo.Models
 {
-    public Order Order { get; }
-    public Product Product { get; set; }
-    public UInt16 Quantity { get; set; }
-    public Decimal Price { get; set; }
+    class OrderItem
+    {
+        public Guid OrderId { get; set; }
+        public Order Order { get; set; }
+        public uint ProductId { get; set; }
+        public Product Product { get; set; }
+        public uint Quantity { get; set; }
+        public decimal Price { get; set; }
+    }
 }
