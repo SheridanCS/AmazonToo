@@ -36,3 +36,5 @@ msbuild.log
 msbuild.err
 msbuild.wrn
 
+# Misc duplicate hidden files
+**/._*
