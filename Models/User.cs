@@ -12,5 +12,4 @@ namespace AmazonToo.Models
         public bool IsPrimeMember { get; set; }
         public List<Order> Orders { get; set;  }
     }
-
 }

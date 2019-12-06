@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AmazonToo.Controllers
 {
-    class CartController : Controller
+    public class CartController : Controller
     {
         public IActionResult Index()
         {
@@ -13,13 +13,13 @@ namespace AmazonToo.Controllers
         [HttpPost]
         public IActionResult AddToCart(Product product)
         {
-            return View();
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         public IActionResult RemoveFromCart(Product product)
         {
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }
