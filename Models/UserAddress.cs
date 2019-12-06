@@ -2,7 +2,7 @@ using System;
 
 namespace AmazonToo.Models
 {
-    class UserAddress
+    public class UserAddress
     {
         public Guid UserId { get; set; }
         public User User { get; set;  }

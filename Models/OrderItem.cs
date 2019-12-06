@@ -2,7 +2,7 @@ using System;
 
 namespace AmazonToo.Models
 {
-    class OrderItem
+    public class OrderItem
     {
         public Guid OrderId { get; set; }
         public Order Order { get; set; }

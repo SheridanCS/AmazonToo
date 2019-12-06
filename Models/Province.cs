@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AmazonToo.Models
 {
-    enum Province
+    public enum Province
     {
         [Display(Name = "Alberta")]
         AB,

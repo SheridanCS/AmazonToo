@@ -1,0 +1,47 @@
+DROP TABLE IF EXISTS [Product];
+DROP TABLE IF EXISTS [OrderItem];
+DROP TABLE IF EXISTS [Order];
+DROP TABLE IF EXISTS [UserAddress];
+DROP TABLE IF EXISTS [User];
+
+CREATE TABLE Product (
+    [Id] INTEGER IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    [Title] VARCHAR(100) NOT NULL,
+    [Description] VARCHAR(2000),
+    [UnitPrice] DECIMAL(18,2) NOT NULL,
+    [Image] BINARY DEFAULT NULL,
+    [IsPrime] BIT DEFAULT 0
+);
+
+CREATE TABLE [Order] (
+    [Id] VARCHAR(50) NOT NULL PRIMARY KEY,
+    [Total] DECIMAL(18,2) NOT NULL DEFAULT 0.0,
+    [IsProcessed] BIT NOT NULL DEFAULT 0,
+    [IsShipped] BIT NOT NULL DEFAULT 0,
+    [UserId] VARCHAR(50) NOT NULL REFERENCES [User](Id)
+);
+
+CREATE TABLE [OrderItem] (
+    [Id] INTEGER IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    [OrderId] VARCHAR(50) NOT NULL REFERENCES [Order](Id),
+    [ProductId] INTEGER NOT NULL,
+    [Quantity] INTEGER NOT NULL DEFAULT 1,
+    [Price] DECIMAL(18,2) NOT NULL DEFAULT 0.0
+)
+
+CREATE TABLE [User] (
+    [Id] VARCHAR(50) NOT NULL PRIMARY KEY,
+    [Name] VARCHAR(255) NOT NULL,
+    [Email] VARCHAR(255) NOT NULL,
+    [Password] VARCHAR(255) NOT NULL,
+    [IsPrimeMember] BIT NOT NULL DEFAULT 0,
+);
+
+CREATE TABLE [UserAddress] (
+    [Id] INTEGER NOT NULL PRIMARY KEY,
+    [UserId] VARCHAR(50) NOT NULL REFERENCES [User](Id),
+    [AddressLine1] VARCHAR(255),
+    [AddressLine2] VARCHAR(255),
+    [Province] VARCHAR(25),
+    [Country] VARCHAR(25)
+);

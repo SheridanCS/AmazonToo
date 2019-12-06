@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AmazonToo.Models
 {
-    class Order
+    public class Order
     {
         public Guid Id { get; set; }
         public decimal Total { get; set; }
