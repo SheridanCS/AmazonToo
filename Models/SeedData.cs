@@ -2,16 +2,18 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using System;
+using AmazonToo.Models;
 
 namespace AmazonToo.Models {
 
     public static class SeedData {
 
-        public static void EnsurePopulated(IServiceProvider services) {
-            ApplicationDbContext context = services.GetRequiredService<ApplicationDbContext>();
-            //context.Database.Migrate();
-            if (!context.Products.Any()) {
+        public static void EnsurePopulated(IApplicationBuilder app)
+        {
+            ApplicationDbContext context = app.ApplicationServices.GetService<ApplicationDbContext>();
+            context.Database.Migrate();
+            if (!context.Products.Any())
+            {
                 context.Products.AddRange(
                     new Product {
                         Name = "Kayak", Description = "A boat for one person",
