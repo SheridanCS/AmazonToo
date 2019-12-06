@@ -22,5 +22,4 @@ namespace AmazonToo.Controllers
             return View();
         }
     }
-
 }
