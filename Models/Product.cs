@@ -1,15 +1,23 @@
-using System;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace AmazonToo.Models
-{
-    public class Product
-    {
-        public uint Id { get; set; }
-        public string Title { get; set; }
+namespace AmazonToo.Models {
+
+    public class Product {
+        public int ProductID { get; set; }
+
+        [Required(ErrorMessage = "Please enter a product name")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "Please enter a description")]
         public string Description { get; set; }
-        public decimal UnitPrice { get; set; }
-        public string Image { get; set; }
-        public bool IsPrime { get; set; }
-        public OrderItem OrderItem { get; set; }
+
+        [Required]
+        [Range(0.01, double.MaxValue,
+            ErrorMessage = "Please enter a positive price")]
+        public decimal Price { get; set; }
+
+        [Required(ErrorMessage = "Please specify a category")]
+        public string Category { get; set; }
     }
 }

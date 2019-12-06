@@ -1,26 +1,44 @@
-using AmazonToo.Models;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using AmazonToo.Models;
+using AmazonToo.Models.ViewModels;
 
-namespace AmazonToo.Controllers
-{
-    public class CartController : Controller
-    {
-        public IActionResult Index()
-        {
-            return View();
+namespace AmazonToo.Controllers {
+
+    public class CartController : Controller {
+        private IProductRepository repository;
+        private Cart cart;
+
+        public CartController(IProductRepository repo, Cart cartService) {
+            repository = repo;
+            cart = cartService;
         }
 
-        [HttpPost]
-        public IActionResult AddToCart(Product product)
-        {
-            return RedirectToAction("Index");
+        public ViewResult Index(string returnUrl) {
+            return View(new CartIndexViewModel {
+                Cart = cart,
+                ReturnUrl = returnUrl
+            });
         }
 
-        [HttpPost]
-        public IActionResult RemoveFromCart(Product product)
-        {
-            return RedirectToAction("Index");
+        public RedirectToActionResult AddToCart(int productId, string returnUrl) {
+            Product product = repository.Products
+                .FirstOrDefault(p => p.ProductID == productId);
+            if (product != null) {
+                cart.AddItem(product, 1);
+            }
+            return RedirectToAction("Index", new { returnUrl });
+        }
+
+        public RedirectToActionResult RemoveFromCart(int productId,
+                string returnUrl) {
+            Product product = repository.Products
+                .FirstOrDefault(p => p.ProductID == productId);
+
+            if (product != null) {
+                cart.RemoveLine(product);
+            }
+            return RedirectToAction("Index", new { returnUrl });
         }
     }
-
 }
