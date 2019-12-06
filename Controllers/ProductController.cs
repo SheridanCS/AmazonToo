@@ -2,6 +2,7 @@
 using AmazonToo.Models;
 using System.Linq;
 using AmazonToo.Models.ViewModels;
+using System;
 
 namespace AmazonToo.Controllers {
 
@@ -16,7 +17,15 @@ namespace AmazonToo.Controllers {
         // Individual Product Detail by Id
         public ViewResult Details(int productId)
         {
-            Product product = repository.Products.Where(p => p.ProductID == productId).First();
+            Product product = null;
+
+            try
+            {
+                product = repository.Products.Where(p => p.ProductID == productId).First();
+            } catch (Exception ex)
+            {
+                Console.WriteLine("Error: No Product found for id");
+            }
 
             if (product == null)
             {
