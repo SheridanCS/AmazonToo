@@ -13,6 +13,19 @@ namespace AmazonToo.Controllers {
             repository = repo;
         }
 
+        // Individual Product Detail by Id
+        public ViewResult Details(int productId)
+        {
+            Product product = repository.Products.Where(p => p.ProductID == productId).First();
+
+            if (product == null)
+            {
+                return View("ProductNotFound");
+            }
+
+            return View(product);
+        }
+
         public ViewResult List(string category, int productPage = 1)
             => View(new ProductsListViewModel {
                 Products = repository.Products

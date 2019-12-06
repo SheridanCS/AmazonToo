@@ -9,8 +9,16 @@ CREATE TABLE Product (
     [Title] VARCHAR(100) NOT NULL,
     [Description] VARCHAR(2000),
     [UnitPrice] DECIMAL(18,2) NOT NULL,
-    [Image] BINARY DEFAULT NULL,
+    [Image] VARCHAR(200) DEFAULT NULL,
     [IsPrime] BIT DEFAULT 0
+);
+
+CREATE TABLE [User] (
+    [Id] VARCHAR(50) NOT NULL PRIMARY KEY,
+    [Name] VARCHAR(255) NOT NULL,
+    [Email] VARCHAR(255) NOT NULL,
+    [Password] VARCHAR(255) NOT NULL,
+    [IsPrimeMember] BIT NOT NULL DEFAULT 0,
 );
 
 CREATE TABLE [Order] (
@@ -28,14 +36,6 @@ CREATE TABLE [OrderItem] (
     [Quantity] INTEGER NOT NULL DEFAULT 1,
     [Price] DECIMAL(18,2) NOT NULL DEFAULT 0.0
 )
-
-CREATE TABLE [User] (
-    [Id] VARCHAR(50) NOT NULL PRIMARY KEY,
-    [Name] VARCHAR(255) NOT NULL,
-    [Email] VARCHAR(255) NOT NULL,
-    [Password] VARCHAR(255) NOT NULL,
-    [IsPrimeMember] BIT NOT NULL DEFAULT 0,
-);
 
 CREATE TABLE [UserAddress] (
     [Id] INTEGER NOT NULL PRIMARY KEY,
