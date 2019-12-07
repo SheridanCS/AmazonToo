@@ -1,43 +1,21 @@
 @model AmazonToo.Models.Product;
 
-@{
-    ViewData["Title"] = "Details";
-    Layout = "";
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-</head>
-<body>
-    <div class="container">
-        <div class="card">
-            <div class="container-fliud">
-                <div class="wrapper row">
-                    <div class="preview col-md-6">
-                        <div class="preview-pic tab-content">
-                            <!--<div class="tab-pane active" id="img"><img src="Url.Content(Model.Image)" /></div> -->
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h3 class="h3">@Model.Name</h3>
-                        <p class="description">@Model.Description</p>
-                        <br />
-                        <h4 class="h4">Retail Price: <span>$@Model.Price</span></h4>
-                        <br />
-                        <a class="btn btn-success" asp-action="">Add to Cart</a>
-                    </div>
+<div class="card">
+    <div class="container-fliud">
+        <div class="wrapper row">
+            <div class="preview col-md-6">
+                <div class="preview-pic tab-content">
+                    <!--<div class="tab-pane active" id="img"><img src="Url.Content(Model.Image)" /></div> -->
                 </div>
+            </div>
+            <div class="col-md-6">
+                <h3 class="h3">@Model.Name</h3>
+                <p class="description">@Model.Description</p>
+                <br />
+                <h4 class="h4">Retail Price: <span>$@Model.Price</span></h4>
+                <br />
+                <a class="btn btn-success" asp-action="">Add to Cart</a>
             </div>
         </div>
     </div>
-
-</body>
-</html>
+</div>
