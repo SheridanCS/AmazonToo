@@ -15,7 +15,13 @@
                     <br />
                     <h4 class="h4">Retail Price: <span class="badge badge-pill badge-primary">$@Model.Price</span></h4>
                     <br />
-                    <a class="btn btn-success" asp-action="AddToCart" asp-controller="Cart">Add to Cart</a>
+                    <form id="@Model.ProductID" asp-action="AddToCart"
+                          asp-controller="Cart" method="post">
+                        <input type="hidden" asp-for="ProductID" />
+                        <input type="hidden" name="returnUrl"
+                               value="/Page1" />
+                        <button type="submit" class="btn btn-success" >Add to Cart</button>
+                    </form>
                 </div>
             </div>
         </div>

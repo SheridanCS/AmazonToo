@@ -15,7 +15,8 @@ namespace AmazonToo.Controllers {
         }
 
         // Individual Product Detail by Id
-        public IActionResult Details(int productId)
+        [Route("/Product/Details/{productId:int}")]
+        public ViewResult Details([FromRoute] int productId)
         {
             Product product = null;
 

@@ -33,8 +33,8 @@ namespace AmazonToo
             services.AddSession(options =>
             {
                 // Set a short timeout for easy testing.
-                options.IdleTimeout = TimeSpan.FromSeconds(10);
-                options.Cookie.HttpOnly = true;
+                //options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = false;
                 // Make the session cookie essential
                 options.Cookie.IsEssential = true;
             });
@@ -72,7 +72,7 @@ namespace AmazonToo
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
-            //app.UseCookiePolicy();
+            app.UseCookiePolicy();
             app.UseAuthentication();
 
             app.UseMvc(routes => {
