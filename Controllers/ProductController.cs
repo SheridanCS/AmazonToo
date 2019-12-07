@@ -8,30 +8,29 @@ namespace AmazonToo.Controllers {
 
     public class ProductController : Controller {
         private IProductRepository repository;
-        public int PageSize = 4;
+        public int PageSize = 10;
 
         public ProductController(IProductRepository repo) {
             repository = repo;
         }
 
         // Individual Product Detail by Id
-        public ViewResult Details(int productId)
+        public IActionResult Details(int productId)
         {
             Product product = null;
 
             try
             {
-                product = repository.Products.Where(p => p.ProductID == productId).Single();
-            } catch (Exception ex)
+                product = repository.Products.Where(p => p.ProductID == productId).First();
+                return View(product);
+            }
+            catch (Exception ex)
             {
-                Console.WriteLine("Error: No Product found for id");
+                Console.WriteLine($"Error: No Product found for id. {ex}");
             }
 
-            if (product == null)
-            {
-                return View("ProductNotFound");
-            }
-            return View(product);
+            return View("ProductNotFound");
+
         }
 
         public ViewResult List(string category, int productPage = 1)
