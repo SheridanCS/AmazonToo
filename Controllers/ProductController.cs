@@ -21,7 +21,7 @@ namespace AmazonToo.Controllers {
 
             try
             {
-                product = repository.Products.Where(p => p.ProductID == productId).First();
+                product = repository.Products.Where(p => p.ProductID == productId).Single();
             } catch (Exception ex)
             {
                 Console.WriteLine("Error: No Product found for id");
@@ -31,7 +31,6 @@ namespace AmazonToo.Controllers {
             {
                 return View("ProductNotFound");
             }
-
             return View(product);
         }
 
